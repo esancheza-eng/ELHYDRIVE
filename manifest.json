@@ -1,0 +1,48 @@
+{
+  "name": "ELHYDRIVE - Tu amigo al volante",
+  "short_name": "ELHYDRIVE",
+  "description": "Taxi Amigo personalizado y acompañamiento para aprender a conducir o ganar confianza al volante. Solicita carreras y clases por WhatsApp.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "lang": "es-EC",
+  "dir": "ltr",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["travel", "transportation", "education"],
+  "shortcuts": [
+    {
+      "name": "Solicitar carrera",
+      "short_name": "Carrera",
+      "description": "Abrir WhatsApp para solicitar una carrera",
+      "url": "./index.html#solicitar",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Aprender a conducir",
+      "short_name": "Aprender",
+      "url": "./index.html#aprender",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
