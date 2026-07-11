@@ -1,6 +1,6 @@
 /**
  * ELHYDRIVE - Main JavaScript
- * PWA + Geolocation + WhatsApp Integration + UX
+ * PWA + Geolocation + Google Maps Interactive + WhatsApp Integration + UX
  */
 
 (function () {
@@ -9,6 +9,8 @@
   // ========== CONFIG ==========
   const WHATSAPP_NUMBER = '593989938910'; // Ecuador format without +
   const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`;
+  const DEFAULT_CENTER = { lat: -2.134, lng: -79.594 }; // Milagro / Guayaquil area
+  const DEFAULT_ZOOM = 13;
 
   // ========== LOADER ==========
   window.addEventListener('load', () => {
@@ -91,6 +93,62 @@
     });
   });
 
+  // ========== GOOGLE MAPS INTERACTIVE ==========
+  const googleMap = document.getElementById('googleMap');
+  const mapTitle = document.getElementById('mapTitle');
+  const mapBadge = document.getElementById('mapBadge');
+  const coordsBox = document.getElementById('coordsBox');
+  const coordsValue = document.getElementById('coordsValue');
+  const openInMaps = document.getElementById('openInMaps');
+  const mapPreview = document.getElementById('mapPreview');
+
+  function buildEmbedUrl(lat, lng, zoom = 16) {
+    return `https://maps.google.com/maps?q=${lat},${lng}&z=${zoom}&hl=es&output=embed`;
+  }
+
+  function updateMap(lat, lng, zoom = 16, label = 'Tu ubicación') {
+    if (!googleMap) return;
+    const url = buildEmbedUrl(lat, lng, zoom);
+    googleMap.src = url;
+
+    if (mapTitle) mapTitle.textContent = label;
+    if (mapBadge) {
+      mapBadge.innerHTML = '<i class="fas fa-map-pin"></i> Ubicación del cliente';
+      mapBadge.classList.add('active');
+    }
+    if (coordsBox) coordsBox.style.display = 'block';
+    if (coordsValue) coordsValue.textContent = `${lat}, ${lng}`;
+    if (openInMaps) {
+      openInMaps.href = `https://www.google.com/maps?q=${lat},${lng}`;
+    }
+
+    // Also update form preview if exists
+    if (mapPreview) {
+      mapPreview.style.display = 'block';
+      const prevIframe = mapPreview.querySelector('iframe');
+      if (prevIframe) prevIframe.src = url;
+    }
+  }
+
+  function resetMapToZone() {
+    if (!googleMap) return;
+    googleMap.src = buildEmbedUrl(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng, DEFAULT_ZOOM);
+    if (mapTitle) mapTitle.textContent = 'Zona ELHYDRIVE · Milagro / Guayaquil';
+    if (mapBadge) {
+      mapBadge.innerHTML = '<i class="fas fa-car-side"></i> Cobertura activa';
+      mapBadge.classList.remove('active');
+    }
+    if (coordsBox) coordsBox.style.display = 'none';
+  }
+
+  // Buttons on map section
+  const btnCentrar = document.getElementById('btnCentrarMapa');
+  const btnMiUbicacionMapa = document.getElementById('btnMiUbicacionMapa');
+
+  if (btnCentrar) {
+    btnCentrar.addEventListener('click', resetMapToZone);
+  }
+
   // ========== GEOLOCATION ==========
   const btnUbicacion = document.getElementById('btnUbicacion');
   const recogidaInput = document.getElementById('recogida');
@@ -103,7 +161,7 @@
     geoStatus.className = type;
   }
 
-  function getLocation() {
+  function getLocation(scrollToMap = false) {
     if (!navigator.geolocation) {
       setGeoStatus('Tu navegador no soporta geolocalización.', 'error');
       return;
@@ -113,6 +171,10 @@
     if (btnUbicacion) {
       btnUbicacion.disabled = true;
       btnUbicacion.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ubicando...';
+    }
+    if (btnMiUbicacionMapa) {
+      btnMiUbicacionMapa.disabled = true;
+      btnMiUbicacionMapa.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
     }
 
     navigator.geolocation.getCurrentPosition(
@@ -127,10 +189,21 @@
           recogidaInput.dataset.maps = mapsUrl;
         }
 
-        setGeoStatus(`✅ Ubicación obtenida. Se incluirá el enlace de Google Maps.`, 'success');
+        // Update interactive map
+        updateMap(lat, lng, 16, 'Tu ubicación actual');
+
+        setGeoStatus(`✅ Ubicación obtenida. Mapa actualizado y se incluirá el enlace en WhatsApp.`, 'success');
         if (btnUbicacion) {
           btnUbicacion.disabled = false;
           btnUbicacion.innerHTML = '<i class="fas fa-check"></i> Ubicación lista';
+        }
+        if (btnMiUbicacionMapa) {
+          btnMiUbicacionMapa.disabled = false;
+          btnMiUbicacionMapa.innerHTML = '<i class="fas fa-location-crosshairs"></i> Mi ubicación';
+        }
+
+        if (scrollToMap) {
+          document.getElementById('mapa')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       },
       (error) => {
@@ -143,13 +216,21 @@
           btnUbicacion.disabled = false;
           btnUbicacion.innerHTML = '<i class="fas fa-location-crosshairs"></i> Usar mi ubicación';
         }
+        if (btnMiUbicacionMapa) {
+          btnMiUbicacionMapa.disabled = false;
+          btnMiUbicacionMapa.innerHTML = '<i class="fas fa-location-crosshairs"></i> Mi ubicación';
+        }
       },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
     );
   }
 
   if (btnUbicacion) {
-    btnUbicacion.addEventListener('click', getLocation);
+    btnUbicacion.addEventListener('click', () => getLocation(false));
+  }
+
+  if (btnMiUbicacionMapa) {
+    btnMiUbicacionMapa.addEventListener('click', () => getLocation(true));
   }
 
   // Bottom nav geo also triggers
@@ -157,8 +238,14 @@
   if (bottomGeo) {
     bottomGeo.addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('solicitar')?.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(getLocation, 600);
+      const mapa = document.getElementById('mapa');
+      if (mapa) {
+        mapa.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => getLocation(false), 500);
+      } else {
+        document.getElementById('solicitar')?.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => getLocation(false), 600);
+      }
     });
   }
 
@@ -225,7 +312,6 @@
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Show banner after a delay if not dismissed
     if (pwaInstall && !localStorage.getItem('pwaDismissed')) {
       setTimeout(() => {
         pwaInstall.classList.remove('d-none');
@@ -260,8 +346,5 @@
     fechaInput.min = today;
   }
 
-  // ========== PREVENT ZOOM ON INPUT FOCUS (iOS) ==========
-  // Already handled with viewport max-scale, but ensure fonts are readable
-
-  console.log('%cELHYDRIVE listo 🚗', 'color: #38bdf8; font-weight: bold; font-size: 14px;');
+  console.log('%cELHYDRIVE + Google Maps listo 🚗📍', 'color: #38bdf8; font-weight: bold; font-size: 14px;');
 })();
