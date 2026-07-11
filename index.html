@@ -8,7 +8,7 @@
   <!-- SEO -->
   <title>ELHYDRIVE | Taxi Amigo y Acompañamiento para Aprender a Conducir</title>
   <meta name="description" content="ELHYDRIVE ofrece servicio personalizado de transporte (Taxi Amigo) y acompañamiento para personas que desean aprender a conducir desde cero o ganar confianza al volante. Chevrolet Sail blanco 2012. Guayaquil y Milagro, Ecuador.">
-  <meta name="keywords" content="taxi amigo, aprender a conducir, práctica de manejo, ELHYDRIVE, taxi personalizado Ecuador, clases de manejo Guayaquil, confianza al volante, Chevrolet Sail">
+  <meta name="keywords" content="taxi amigo, aprender a conducir, práctica de manejo, ELHYDRIVE, taxi personalizado Ecuador, clases de manejo Guayaquil, confianza al volante, Chevrolet Sail, mapa">
   <meta name="author" content="ELHYDRIVE">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://esancheza-eng.github.io/ELHYDRIVE/">
@@ -83,6 +83,7 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/map.css">
 </head>
 <body>
   <!-- Loader -->
@@ -116,6 +117,7 @@
           <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="#taxi-amigo">Taxi Amigo</a></li>
           <li class="nav-item"><a class="nav-link" href="#solicitar">Solicitar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
           <li class="nav-item"><a class="nav-link" href="#aprender">Aprende a conducir</a></li>
           <li class="nav-item"><a class="nav-link" href="#confianza">Práctica</a></li>
           <li class="nav-item"><a class="nav-link" href="#vehiculo">Mi vehículo</a></li>
@@ -286,7 +288,7 @@
       <div class="section-header text-center mb-5" data-aos="fade-up">
         <span class="section-badge">Formulario inteligente</span>
         <h2 class="section-title">Solicitar carrera por WhatsApp</h2>
-        <p class="section-subtitle">Completa los datos o usa tu ubicación actual. Todo se envía organizado a nuestro WhatsApp.</p>
+        <p class="section-subtitle">Completa los datos o usa tu ubicación actual. El mapa se actualiza y el enlace viaja en el mensaje.</p>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-8" data-aos="fade-up">
@@ -310,6 +312,10 @@
                     </button>
                   </div>
                   <small class="text-muted" id="geoStatus"></small>
+                  <!-- Mini map preview after location -->
+                  <div id="mapPreview">
+                    <iframe title="Vista previa de tu ubicación" src="about:blank" loading="lazy"></iframe>
+                  </div>
                 </div>
                 <div class="col-12">
                   <label class="form-label">Destino *</label>
@@ -338,6 +344,100 @@
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAPA INTERACTIVO GOOGLE MAPS ========== -->
+  <section id="mapa" class="mapa-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-4" data-aos="fade-up">
+        <span class="section-badge">Mapa en vivo</span>
+        <h2 class="section-title">Mapa interactivo</h2>
+        <p class="section-subtitle">Visualiza nuestra zona de cobertura (Milagro / Guayaquil y alrededores). Usa tu ubicación en el formulario y el pin se actualizará aquí.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="map-container">
+            <div class="map-header">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-map-marked-alt text-accent"></i>
+                <span id="mapTitle">Zona ELHYDRIVE · Milagro / Guayaquil</span>
+              </div>
+              <div class="map-actions">
+                <button type="button" class="btn btn-sm btn-outline-accent" id="btnCentrarMapa" title="Centrar en zona de servicio">
+                  <i class="fas fa-crosshairs"></i> Zona
+                </button>
+                <button type="button" class="btn btn-sm btn-accent" id="btnMiUbicacionMapa" title="Mostrar mi ubicación en el mapa">
+                  <i class="fas fa-location-crosshairs"></i> Mi ubicación
+                </button>
+              </div>
+            </div>
+            <div class="map-frame-wrap">
+              <iframe 
+                id="googleMap"
+                title="Mapa ELHYDRIVE"
+                src="https://maps.google.com/maps?q=-2.134,-79.594&z=13&hl=es&output=embed"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <div class="map-overlay-badge" id="mapBadge">
+                <i class="fas fa-car-side"></i> Cobertura activa
+              </div>
+            </div>
+            <div class="map-footer">
+              <small class="text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                Puedes hacer zoom, arrastrar y abrir Street View. Al compartir tu ubicación el mapa se centra en ti.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-left">
+          <div class="map-info-card">
+            <h4><i class="fas fa-map-marker-alt text-accent me-2"></i>Cómo usarlo</h4>
+            <ul class="map-steps">
+              <li>
+                <span class="step-num">1</span>
+                <div>
+                  <strong>Comparte tu ubicación</strong>
+                  <p>En el formulario de carrera o con el botón de arriba.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">2</span>
+                <div>
+                  <strong>El pin se actualiza</strong>
+                  <p>El mapa se centra automáticamente en tu posición exacta.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">3</span>
+                <div>
+                  <strong>Envía la carrera</strong>
+                  <p>El enlace de Google Maps viaja en el mensaje de WhatsApp.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="map-coords mt-4" id="coordsBox" style="display:none;">
+              <div class="coords-label">Tus coordenadas</div>
+              <div class="coords-value" id="coordsValue">—</div>
+              <a href="#" id="openInMaps" class="btn btn-sm btn-outline-accent w-100 mt-2" target="_blank" rel="noopener">
+                <i class="fas fa-external-link-alt me-1"></i> Abrir en Google Maps
+              </a>
+            </div>
+
+            <div class="mt-4">
+              <a href="#solicitar" class="btn btn-accent w-100">
+                <i class="fas fa-taxi me-2"></i>Solicitar carrera ahora
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -524,6 +624,7 @@
             <li><a href="#taxi-amigo">Taxi Amigo</a></li>
             <li><a href="#aprender">Aprende a conducir</a></li>
             <li><a href="#confianza">Gana confianza</a></li>
+            <li><a href="#mapa">Mapa</a></li>
             <li><a href="#solicitar">Solicitar carrera</a></li>
           </ul>
         </div>
@@ -569,9 +670,9 @@
       <i class="fas fa-taxi"></i>
       <span>Carrera</span>
     </a>
-    <a href="#solicitar" class="bottom-nav-item" id="bottomGeo" data-section="ubicacion">
-      <i class="fas fa-location-arrow"></i>
-      <span>Ubicación</span>
+    <a href="#mapa" class="bottom-nav-item" id="bottomGeo" data-section="mapa">
+      <i class="fas fa-map-marked-alt"></i>
+      <span>Mapa</span>
     </a>
     <a href="#aprender" class="bottom-nav-item" data-section="aprender">
       <i class="fas fa-steering-wheel"></i>
