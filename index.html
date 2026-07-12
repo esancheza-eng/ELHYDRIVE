@@ -1,1 +1,426 @@
-PLACEHOLDER_TOO_LONG
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ELHYDRIVE | Tu amigo al volante</title>
+  <meta name="description" content="ELHYDRIVE - Tu amigo al volante. Servicio personalizado de transporte (Taxi Amigo) y acompañamiento para aprender a conducir o ganar confianza al volante. Guayaquil y Milagro, Ecuador.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon-32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/map.css">
+  <style>
+    .logo-img { height: 42px; width: auto; border-radius: 10px; margin-right: 0.6rem; object-fit: contain; }
+    .form-control-lg { font-size: 1.05rem; padding: 0.85rem 1rem; }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-content">
+      <div class="car-loader"><i class="fas fa-car-side"></i></div>
+      <p>ELHYDRIVE</p>
+      <span>Tu amigo al volante</span>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <img src="assets/logo-elhydriver.png" alt="ElhyDriver" class="logo-img">
+        <div class="logo-text-wrap">
+          <span class="logo-text">ELHY<span>DRIVE</span></span>
+          <small class="logo-tagline">Tu amigo al volante</small>
+        </div>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#taxi-amigo">Taxi Amigo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#solicitar">Solicitar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+          <li class="nav-item"><a class="nav-link" href="#aprender">Aprende</a></li>
+          <li class="nav-item"><a class="nav-link" href="#confianza">Práctica</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vehiculo">Vehículo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-2">
+            <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Quiero%20solicitar%20una%20carrera." class="btn btn-accent btn-sm px-3" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp me-1"></i> Carrera
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="inicio" class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center min-vh-100 py-5">
+        <div class="col-lg-7" data-aos="fade-up">
+          <div class="hero-badge"><i class="fas fa-shield-alt"></i> Seguridad • Confianza • Atención personalizada</div>
+          <h1 class="hero-title">ELHY<span class="text-accent">DRIVE</span></h1>
+          <p class="hero-slogan">Tu amigo al volante</p>
+          <p class="hero-subtitle">Tu viaje, tu seguridad y tu confianza al volante, en un solo lugar.</p>
+          <div class="hero-buttons d-flex flex-wrap gap-3 mt-4">
+            <a href="#solicitar" class="btn btn-accent btn-lg"><i class="fas fa-taxi me-2"></i>Quiero una carrera</a>
+            <a href="#aprender" class="btn btn-outline-light btn-lg"><i class="fas fa-steering-wheel me-2"></i>Aprender a conducir</a>
+            <a href="#confianza" class="btn btn-outline-light btn-lg"><i class="fas fa-id-card me-2"></i>Ganar confianza</a>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+          <div class="hero-car-wrap">
+            <img src="assets/vehiculo-elhy.jpg" alt="Vehículo ELHYDRIVE" class="hero-car img-fluid" loading="eager">
+            <div class="hero-car-badge"><span>Servicio personalizado</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que" class="why-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">¿Por qué elegirnos?</span>
+        <h2 class="section-title">¿Por qué elegir ELHYDRIVE?</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg" data-aos="fade-up"><div class="why-card"><div class="why-icon"><i class="fas fa-hand-holding-heart"></i></div><h4>Atención personalizada</h4><p>Servicio cercano y directo.</p></div></div>
+        <div class="col-6 col-md-4 col-lg" data-aos="fade-up"><div class="why-card"><div class="why-icon"><i class="fab fa-whatsapp"></i></div><h4>Comunicación rápida</h4><p>Directo por WhatsApp.</p></div></div>
+        <div class="col-6 col-md-4 col-lg" data-aos="fade-up"><div class="why-card"><div class="why-icon"><i class="fas fa-taxi"></i></div><h4>Transporte</h4><p>Carrera rápida y sencilla.</p></div></div>
+        <div class="col-6 col-md-4 col-lg" data-aos="fade-up"><div class="why-card"><div class="why-icon"><i class="fas fa-graduation-cap"></i></div><h4>Aprende a conducir</h4><p>Desde cero.</p></div></div>
+        <div class="col-6 col-md-4 col-lg" data-aos="fade-up"><div class="why-card"><div class="why-icon"><i class="fas fa-heart"></i></div><h4>Gana confianza</h4><p>Práctica segura.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="taxi-amigo" class="taxi-section py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section-badge">Servicio principal</span>
+          <h2 class="section-title">🚕 TAXI AMIGO</h2>
+          <p class="lead">¿Necesitas movilizarte? Viaja con seguridad, confianza y atención personalizada.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Conductor de confianza</li>
+            <li><i class="fas fa-check-circle"></i> Vehículo limpio y cómodo</li>
+            <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+            <li><i class="fas fa-check-circle"></i> Precios justos</li>
+          </ul>
+          <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Quiero%20solicitar%20una%20carrera." class="btn btn-accent btn-lg mt-3" target="_blank" rel="noopener">
+            <i class="fas fa-taxi me-2"></i>QUIERO UNA CARRERA
+          </a>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="taxi-card">
+            <div class="taxi-card-header"><i class="fas fa-map-marker-alt"></i> Solicitud rápida</div>
+            <p class="mb-3">El mensaje se prepara automáticamente. Solo completa y envía.</p>
+            <div class="msg-bubble">
+              Hola, ELHYDRIVE. 👋 Quiero solicitar una carrera.<br>
+              📍 Mi ubicación de recogida es:<br>
+              🎯 Mi destino es:<br>
+              🕐 Hora aproximada:<br>
+              👤 Mi nombre es:
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO RÁPIDO Y BÁSICO -->
+  <section id="solicitar" class="form-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Formulario rápido</span>
+        <h2 class="section-title">Solicitar carrera</h2>
+        <p class="section-subtitle">Solo 3 datos. Rápido y simple.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6" data-aos="fade-up">
+          <div class="form-card">
+            <form id="carreraForm">
+              <div class="mb-3">
+                <label class="form-label">Tu nombre *</label>
+                <input type="text" class="form-control form-control-lg" id="nombre" required placeholder="Ej: Juan">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">¿Dónde te recogemos? *</label>
+                <div class="input-group">
+                  <input type="text" class="form-control form-control-lg" id="recogida" required placeholder="Dirección o referencia">
+                  <button type="button" class="btn btn-outline-accent" id="btnUbicacion" title="Usar mi ubicación">
+                    <i class="fas fa-location-crosshairs"></i>
+                  </button>
+                </div>
+                <small class="text-muted" id="geoStatus"></small>
+                <div id="mapPreview"><iframe title="Vista previa" src="about:blank" loading="lazy"></iframe></div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">¿A dónde vas? *</label>
+                <input type="text" class="form-control form-control-lg" id="destino" required placeholder="Destino">
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Hora (opcional)</label>
+                <input type="time" class="form-control form-control-lg" id="hora">
+              </div>
+              <button type="submit" class="btn btn-accent btn-lg w-100">
+                <i class="fab fa-whatsapp me-2"></i>SOLICITAR CARRERA
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mapa" class="mapa-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-4" data-aos="fade-up">
+        <span class="section-badge">Mapa en vivo</span>
+        <h2 class="section-title">Mapa interactivo</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="map-container">
+            <div class="map-header">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-map-marked-alt text-accent"></i>
+                <span id="mapTitle">Zona ELHYDRIVE · Milagro / Guayaquil</span>
+              </div>
+              <div class="map-actions">
+                <button type="button" class="btn btn-sm btn-outline-accent" id="btnCentrarMapa"><i class="fas fa-crosshairs"></i> Zona</button>
+                <button type="button" class="btn btn-sm btn-accent" id="btnMiUbicacionMapa"><i class="fas fa-location-crosshairs"></i> Mi ubicación</button>
+              </div>
+            </div>
+            <div class="map-frame-wrap">
+              <iframe id="googleMap" title="Mapa ELHYDRIVE" src="https://maps.google.com/maps?q=-2.134,-79.594&z=13&hl=es&output=embed" allowfullscreen loading="lazy"></iframe>
+              <div class="map-overlay-badge" id="mapBadge"><i class="fas fa-car-side"></i> Cobertura activa</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4" data-aos="fade-left">
+          <div class="map-info-card">
+            <h4><i class="fas fa-map-marker-alt text-accent me-2"></i>Cómo usarlo</h4>
+            <ul class="map-steps">
+              <li><span class="step-num">1</span><div><strong>Comparte ubicación</strong><p>En el formulario o aquí.</p></div></li>
+              <li><span class="step-num">2</span><div><strong>El pin se actualiza</strong><p>El mapa se centra en ti.</p></div></li>
+              <li><span class="step-num">3</span><div><strong>Envía la carrera</strong><p>El link va en WhatsApp.</p></div></li>
+            </ul>
+            <div class="map-coords mt-4" id="coordsBox" style="display:none;">
+              <div class="coords-label">Tus coordenadas</div>
+              <div class="coords-value" id="coordsValue">—</div>
+              <a href="#" id="openInMaps" class="btn btn-sm btn-outline-accent w-100 mt-2" target="_blank"><i class="fas fa-external-link-alt me-1"></i> Abrir en Maps</a>
+            </div>
+            <a href="#solicitar" class="btn btn-accent w-100 mt-4"><i class="fas fa-taxi me-2"></i>Solicitar carrera</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aprender" class="aprender-section py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+          <span class="section-badge">Desde cero</span>
+          <h2 class="section-title">🚘 APRENDE A CONDUCIR DESDE CERO</h2>
+          <p class="lead">Acompañamiento personalizado para desarrollar confianza y habilidades básicas.</p>
+          <div class="benefits-grid">
+            <div class="benefit-item"><i class="fas fa-car"></i> Introducción al vehículo</div>
+            <div class="benefit-item"><i class="fas fa-sliders-h"></i> Controles básicos</div>
+            <div class="benefit-item"><i class="fas fa-steering-wheel"></i> Uso del volante</div>
+            <div class="benefit-item"><i class="fas fa-play"></i> Arranque y frenado</div>
+            <div class="benefit-item"><i class="fas fa-parking"></i> Estacionamiento</div>
+            <div class="benefit-item"><i class="fas fa-user-friends"></i> Acompañamiento personalizado</div>
+          </div>
+          <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Estoy%20interesado%20en%20aprender%20a%20conducir%20desde%20cero." class="btn btn-accent btn-lg mt-4" target="_blank" rel="noopener">
+            <i class="fas fa-graduation-cap me-2"></i>QUIERO APRENDER
+          </a>
+        </div>
+        <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+          <div class="service-visual">
+            <div class="visual-card">
+              <i class="fas fa-steering-wheel fa-4x mb-3 text-accent"></i>
+              <h3>Acompañamiento real</h3>
+              <p>Práctica real en un vehículo cómodo, con instructor paciente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="confianza" class="confianza-section py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section-badge">Ya tienes licencia</span>
+          <h2 class="section-title">🪪 ¿TIENES LICENCIA PERO AÚN NO TE SIENTES SEGURO/A?</h2>
+          <p class="lead">Acompañamiento personalizado para recuperar la confianza al volante.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Práctica de conducción</li>
+            <li><i class="fas fa-check-circle"></i> Calles y avenidas</li>
+            <li><i class="fas fa-check-circle"></i> Estacionamiento y maniobras</li>
+            <li><i class="fas fa-check-circle"></i> Control del vehículo</li>
+          </ul>
+          <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Tengo%20licencia%20y%20quiero%20ganar%20confianza%20al%20volante." class="btn btn-accent btn-lg mt-3" target="_blank" rel="noopener">
+            <i class="fas fa-heart me-2"></i>QUIERO GANAR CONFIANZA
+          </a>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="service-visual dark">
+            <div class="visual-card">
+              <i class="fas fa-id-card fa-4x mb-3 text-accent"></i>
+              <h3>De la teoría a la seguridad real</h3>
+              <p>Te acompañamos hasta que conduzcas con tranquilidad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vehiculo" class="vehiculo-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Tu vehículo para el viaje</span>
+        <h2 class="section-title">Tu vehículo para el viaje</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="zoom-in">
+          <div class="vehiculo-card">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-6">
+                <div class="vehiculo-img-wrap">
+                  <img src="assets/vehiculo-elhy.jpg" alt="Vehículo ELHYDRIVE" class="img-fluid">
+                  <div class="vehiculo-badge">Servicio personalizado</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="vehiculo-info">
+                  <h3>Vehículo de servicio</h3>
+                  <div class="vehiculo-meta">
+                    <span><i class="fas fa-palette"></i> Color blanco</span>
+                    <span><i class="fas fa-car"></i> Cómodo y confiable</span>
+                  </div>
+                  <ul class="vehiculo-features">
+                    <li><i class="fas fa-check"></i> Vehículo cómodo</li>
+                    <li><i class="fas fa-check"></i> Atención personalizada</li>
+                    <li><i class="fas fa-check"></i> Servicio confiable</li>
+                    <li><i class="fas fa-check"></i> Limpio y en buen estado</li>
+                  </ul>
+                  <p class="vehiculo-note">Tu seguridad y comodidad son nuestra prioridad.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto-section py-5">
+    <div class="container">
+      <div class="cta-final text-center" data-aos="zoom-in">
+        <h2>¿Listo para viajar o aprender?</h2>
+        <p>Estamos a un mensaje de distancia.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Quiero%20solicitar%20una%20carrera." class="btn btn-accent btn-lg" target="_blank" rel="noopener">
+            <i class="fas fa-taxi me-2"></i>Solicitar carrera
+          </a>
+          <a href="https://wa.me/593989938910?text=Hola%20ELHYDRIVE%2C%20quiero%20informaci%C3%B3n." class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp me-2"></i>Información
+          </a>
+        </div>
+        <div class="contacto-info mt-5">
+          <p><i class="fab fa-whatsapp"></i> <strong>0989938910</strong></p>
+          <p class="small text-muted">Milagro / Guayaquil • Ecuador</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row g-4 py-5">
+        <div class="col-lg-4">
+          <div class="footer-brand d-flex align-items-center mb-3">
+            <img src="assets/logo-elhydriver.png" alt="ElhyDriver" style="height:40px;border-radius:8px;margin-right:0.6rem;">
+            <div>
+              <span class="logo-text">ELHY<span>DRIVE</span></span>
+              <small class="d-block logo-tagline">Tu amigo al volante</small>
+            </div>
+          </div>
+          <p class="footer-desc">Servicio personalizado de transporte y acompañamiento para aprender a conducir o ganar confianza al volante.</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <h5>Servicios</h5>
+          <ul class="footer-links">
+            <li><a href="#taxi-amigo">Taxi Amigo</a></li>
+            <li><a href="#aprender">Aprende a conducir</a></li>
+            <li><a href="#confianza">Gana confianza</a></li>
+            <li><a href="#mapa">Mapa</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <h5>Enlaces</h5>
+          <ul class="footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#vehiculo">Mi vehículo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <h5>Contacto</h5>
+          <ul class="footer-contact">
+            <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/593989938910" target="_blank">0989938910</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Milagro / Guayaquil, Ecuador</li>
+          </ul>
+          <a href="https://wa.me/593989938910?text=Hola%20ELHYDRIVE" class="btn btn-accent btn-sm w-100 mt-3" target="_blank">
+            <i class="fab fa-whatsapp me-1"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom text-center py-3">
+        <p class="mb-0">&copy; 2026 ELHYDRIVE. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav d-lg-none">
+    <a href="#inicio" class="bottom-nav-item active" data-section="inicio"><i class="fas fa-home"></i><span>Inicio</span></a>
+    <a href="#solicitar" class="bottom-nav-item" data-section="solicitar"><i class="fas fa-taxi"></i><span>Carrera</span></a>
+    <a href="#mapa" class="bottom-nav-item" id="bottomGeo" data-section="mapa"><i class="fas fa-map-marked-alt"></i><span>Mapa</span></a>
+    <a href="#aprender" class="bottom-nav-item" data-section="aprender"><i class="fas fa-steering-wheel"></i><span>Conducir</span></a>
+    <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Quiero%20solicitar%20una%20carrera." class="bottom-nav-item whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+  </nav>
+
+  <a href="https://wa.me/593989938910?text=Hola%2C%20ELHYDRIVE.%20Quiero%20solicitar%20una%20carrera." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Solicitar carrera por WhatsApp</span>
+  </a>
+
+  <button id="backToTop" class="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+  <div id="pwaInstall" class="pwa-install d-none">
+    <div class="pwa-content">
+      <i class="fas fa-mobile-alt"></i>
+      <div><strong>Instala ELHYDRIVE</strong><small>Agrégalo a tu pantalla de inicio</small></div>
+      <button id="pwaInstallBtn" class="btn btn-sm btn-accent">Instalar</button>
+      <button id="pwaClose" class="btn-close-pwa"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
